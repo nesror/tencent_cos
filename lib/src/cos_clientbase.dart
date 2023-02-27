@@ -81,7 +81,7 @@ class COSClientBase {
   List<String> getListAndParameters(Map<String, String?> params) {
     params = params.map((key, value) => MapEntry(
         Uri.encodeComponent(key).toLowerCase(),
-        Uri.encodeComponent(value ?? "")));
+        Uri.encodeComponent((value!=null)?value.toString():"")
 
     var keys = params.keys.toList();
     keys.sort();
