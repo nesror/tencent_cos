@@ -42,8 +42,8 @@ class COSClientBase {
       String httpString =
           "${method.toLowerCase()}\n$key\n$httpParameters\n$httpHeaders\n";
       cosLog("httpString=$httpString");
-      String stringToSign =
-          "sha1\n$keyTime\n${hex.encode(sha1.convert(httpString.codeUnits).bytes)}\n";
+      String stringToSign = 
+          "sha1\n$keyTime\n${hex.encode(sha1.convert(utf8.encode(httpString)).bytes)}\n";
       cosLog("stringToSign=$stringToSign");
       String signature = hmacSha1(stringToSign, signKey);
       cosLog("signature=$signature");
